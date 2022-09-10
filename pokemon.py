@@ -1,6 +1,8 @@
+import random
+
 class Pokemon:
 
-    def __init__(self, especie, level=1, nome=None) -> None:
+    def __init__(self, especie, level=random.randint(1, 100), nome=None) -> None:
         self.especie = especie
         self.level = level
 
