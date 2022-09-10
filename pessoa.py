@@ -59,5 +59,6 @@ class Inimigo(Pessoa):
 
 
 meu_inimigo = Inimigo()
+
 print(meu_inimigo)
 meu_inimigo.mostrar_pokemons()
