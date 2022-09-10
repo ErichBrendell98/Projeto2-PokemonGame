@@ -24,8 +24,10 @@ class Pokemon:
 
 
     def atacar(self, pokemon):
-        pokemon.vida = pokemon.vida - self.ataque
-        print(f'{pokemon} perdeu {self.ataque} pontos de vida')
+        ataque_efetivo = int(self.ataque * random.random() * 1.3)
+        pokemon.vida -= ataque_efetivo
+        
+        print(f'{pokemon} perdeu {ataque_efetivo} pontos de vida')
 
         if pokemon.vida <= 0:
             print(f'{pokemon} foi derrotado')
