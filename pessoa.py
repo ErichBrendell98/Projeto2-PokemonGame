@@ -1,5 +1,6 @@
-from pokemon import *
 import random
+
+from pokemon import *
 
 NOMES = [
     'João', 'Isabela', 'Lorena', 'Francisco', 'Ricardo', 'Diego',
@@ -16,8 +17,8 @@ POKEMONS = [
     PokemonAgua('Magicarp'),
 ]
 
-class Pessoa:
 
+class Pessoa:
 
     def __init__(self, nome=None, pokemons=[]) -> None:
         if nome:
@@ -33,10 +34,34 @@ class Pessoa:
     def mostrar_pokemons(self):
         if self.pokemons:
             print(f'Pokemons de {self}:')
-            for pokemon in self.pokemons:
-                print(pokemon)
+            for index, pokemon in enumerate(self.pokemons):
+                print(f'{index} - {pokemon}')
         else:
-            print(f'{self} não tem pokemon')
+            print(f'{self} não tem nenhum pokemon')
+
+    def escolher_pokemon(self):
+        self.mostrar_pokemons()
+
+        if self.pokemons:
+            while True:
+                escolha = input('Escolha o seu pokemon: ')
+                try:
+                    escolha = int(escolha)
+                    pokemon_escolhido = self.pokemons[escolha]
+                    print(f'{pokemon_escolhido} eu escolho você!!!')
+                    return pokemon_escolhido
+                except:
+                    print('Escolha inválida')
+        else:
+            print('ERRO: Esse jogador não possui nenhum pokemon para ser escolhido')
+
+    def batalhar(self, pessoa):
+        print(f'{self} iniciou uma batalha com {pessoa}')
+
+        pessoa.mostrar_pokemons()
+        pessoa.escolher_pokemon()
+
+        self.escolher_pokemon()
 
 
 class Player(Pessoa):
@@ -57,8 +82,10 @@ class Inimigo(Pessoa):
 
         super().__init__(nome=nome, pokemons=pokemons)
 
-
-meu_inimigo = Inimigo()
-
-print(meu_inimigo)
-meu_inimigo.mostrar_pokemons()
+    def escolher_pokemon(self):
+        if self.pokemons:
+            pokemon_escolhido = random.choice(self.pokemons)
+            print(f'{self} escolheu {pokemon_escolhido}')
+            return pokemon_escolhido
+        else:
+            print('ERRO: Esse jogador não possui nenhum pokemon para ser escolhido')
