@@ -15,13 +15,23 @@ class Pokemon:
         else:
             self.nome = especie
 
+        self.ataque = self.level * 5
+        self.vida = self.level * 10
+
 
     def __str__(self) -> str:
         return f'{self.nome} ({self.level})'
 
 
     def atacar(self, pokemon):
-        print(f'{self.nome} atacou {pokemon.nome}')
+        pokemon.vida = pokemon.vida - self.ataque
+        print(f'{pokemon} perdeu {self.ataque} pontos de vida')
+
+        if pokemon.vida <= 0:
+            print(f'{pokemon} foi derrotado')
+            return True
+        else:
+            return False
 
 
 class PokemonEletrico(Pokemon):
@@ -29,6 +39,7 @@ class PokemonEletrico(Pokemon):
 
     def atacar(self, pokemon):
         print(f'{self} lançou um raio do trovão em {pokemon}')
+        return super().atacar(pokemon)
 
 
 class PokemonFogo(Pokemon):
@@ -36,6 +47,7 @@ class PokemonFogo(Pokemon):
 
     def atacar(self, pokemon):
         print(f'{self} lançou uma bola de fogo em {pokemon}')
+        return super().atacar(pokemon)
 
 
 class PokemonAgua(Pokemon):
@@ -43,3 +55,4 @@ class PokemonAgua(Pokemon):
 
     def atacar(self, pokemon):
         print(f'{self} lançou um jato de agua em {pokemon}')
+        return super().atacar(pokemon)
