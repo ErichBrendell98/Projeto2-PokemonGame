@@ -16,7 +16,7 @@ POKEMONS = [
     PokemonAgua('Squartle'),
     PokemonAgua('Magicarp'),
 ]
-
+ 
 
 class Pessoa:
 
@@ -104,6 +104,23 @@ class Player(Pessoa):
                     print('Escolha inválida')
         else:
             print('ERRO: Esse jogador não possui nenhum pokemon para ser escolhido')
+
+    def explorar(self):
+        if random.random() <= 0.3:
+            pokemon = random.choice(POKEMONS)
+            print(f'Um pokemon selvagem apareceu: {pokemon}')
+            
+            escolha = input('Deseja capturar o pokemon(s/n)?: ')
+            
+            if escolha in 'sS':
+                if random.random() >= 0.5:
+                    self.capturar(pokemon)
+                else:
+                    print(f'{pokemon} fugiu!!! Que pena...')
+            elif escolha in 'nN':
+                print('Ok, boa viagem')
+        else:
+            print('Essa exploração não deu em nada...')
 
 
 class Inimigo(Pessoa):

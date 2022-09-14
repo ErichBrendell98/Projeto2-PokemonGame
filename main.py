@@ -34,6 +34,8 @@ player = Player('Erich')
 player.mostrar_dinheiro()
 player.capturar(PokemonFogo('Charmander', level=1))
 
-inimigo1 = Inimigo(nome='Gary', pokemons=[PokemonAgua('Squirtle', level=1)])
+# inimigo1 = Inimigo(nome='Gary', pokemons=[PokemonAgua('Squirtle', level=1)])
+# player.batalhar(inimigo1)
 
-player.batalhar(inimigo1)
+player.explorar()
+player.mostrar_pokemons()
